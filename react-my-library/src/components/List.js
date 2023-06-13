@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Detail from "./Detail";
 
+// TODO:  ul도 컨테이너로 감싸서 하나의 컴포넌트화
+
 const List = (props) => {
   const [data, setData] = useState();
-  // let isClicked = [];
   const [isClicked, setIsClicked] = useState([]);
 
   useEffect(() => {
@@ -12,29 +13,35 @@ const List = (props) => {
     }
     if (data) {
       data.map((obj) => {
-        let temp = [...isClicked];
-        temp[obj.bid] = false;
-        setIsClicked(temp);
+        const initIsClicked = [...isClicked];
+        initIsClicked[obj.pid] = false;
+        setIsClicked(initIsClicked);
       });
     }
   }, [props, data]);
 
-  function onClickHandler(id) {
-    let temp = [...isClicked];
-    console.log(temp);
-    temp[id] = !temp[id];
-    setIsClicked(temp);
-  }
+  const updateIsClicked = (id) => {
+    setIsClicked((prevState) => {
+      const newState = [...prevState];
+      newState[id] = !newState[id];
+      return newState;
+    });
+  };
+
+  const onClickHandler = (id) => {
+    updateIsClicked(id);
+  };
+
   return (
     <>
       {data
-        ?.sort((a, b) => b.bid - a.bid)
+        ?.sort((a, b) => b.pid - a.pid)
         .map((obj) => {
           return (
-            <li key={obj.bid} onClick={() => onClickHandler(obj.bid)}>
-              {`${obj.bid} / ${obj.title} / ${obj.createDate} / ${obj.updateDate} / ${obj.viewCount} / ${obj.like}`}
+            <li key={obj.pid} onClick={() => onClickHandler(obj.pid)}>
+              {`글번호:${obj.pid} / 글제목:${obj.title} / 작성일:${obj.createDate} / 수정일:${obj.updateDate} / 조회수:${obj.viewCount} / 좋아요:${obj.like}`}
               <br />
-              <Detail data={obj} isClicked={isClicked[obj.bid]} />
+              <Detail data={obj} isClicked={isClicked[obj.pid]} />
             </li>
           );
         })}
