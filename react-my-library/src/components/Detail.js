@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-
-// TODO: 독립 페이지로 분리해서 사용 시 컨텍스트로 setState를 빼서 관리해야 할듯
+import { useLocation } from "react-router-dom";
 
 const Detail = (props) => {
-  const [data, setData] = useState();
+  const location = useLocation();
+  const propsData = location.state;
 
-  useEffect(() => {
-    if (props?.data) {
-      setData(props.data);
-    }
-  }, [props, data]);
-  return <>{props.isClicked && data?.content}</>;
+  return (
+    <>
+      {propsData
+        ? `글번호:${propsData.pid} / 글제목: ${propsData.title} / 글내용: ${propsData.content}`
+        : "데이터x"}
+    </>
+  );
 };
 
 export default Detail;

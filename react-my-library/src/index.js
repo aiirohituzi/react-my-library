@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // StrictMode 는 개발 단계에서 개발자의 코드를 확인하여 사전에
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // 실제 빌드에선 그럴 일이 없다.
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
