@@ -118,3 +118,9 @@ export const COMMENT = [
     pid: "1",
   },
 ];
+
+// 상세 게시글 요청 대체 함수
+export const getPost = (pid) => {
+  let filterdPosts = POST.filter((e) => e.pid === Number(pid));
+  return filterdPosts[0];
+};
