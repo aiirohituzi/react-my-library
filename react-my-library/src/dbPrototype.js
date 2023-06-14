@@ -33,7 +33,7 @@ export const POST = [
     updateDate: "YYYY-MM-DD hh:mm:ss",
     viewCount: 0,
     like: 0,
-    uid: 1,
+    uid: "user2",
   },
   {
     pid: 2,
@@ -43,7 +43,7 @@ export const POST = [
     updateDate: "YYYY-MM-DD hh:mm:ss",
     viewCount: 10,
     like: 3,
-    uid: 0,
+    uid: "user1",
   },
   {
     pid: 3,
@@ -53,7 +53,7 @@ export const POST = [
     updateDate: "YYYY-MM-DD hh:mm:ss",
     viewCount: 5,
     like: 0,
-    uid: 0,
+    uid: "user1",
   },
 ];
 
@@ -123,4 +123,9 @@ export const COMMENT = [
 export const getPost = (pid) => {
   let filterdPosts = POST.filter((e) => e.pid === Number(pid));
   return filterdPosts[0];
+};
+
+export const getWriter = (uid) => {
+  let nickname = USER.filter((e) => e.uid === uid);
+  return nickname[0];
 };

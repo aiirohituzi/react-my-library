@@ -1,16 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getPost } from "../dbPrototype";
+import { getPost, getWriter } from "../dbPrototype";
+import { consoleLog } from "../util";
 
 const Detail = (props) => {
   const [post, setPost] = useState();
+  const [writer, setWriter] = useState();
   const params = useParams();
 
-  useEffect(() => {
-    setPost(getPost(params.pid));
-  }, [params]);
+  const data = getPost(params.pid);
 
-  return post ? (
+  useEffect(() => {
+    consoleLog("data", data);
+    if (data) setPost(data);
+  }, [data]);
+
+  useEffect(() => {
+    consoleLog("post", post);
+    if (post) {
+      const writer = getWriter(post.uid);
+      consoleLog("writer", writer);
+      setWriter(writer);
+    }
+  }, [post]);
+
+  return post && writer ? (
     <>
       <p>글번호:{post.pid}</p>
       <p>글제목:{post.title}</p>
@@ -19,7 +33,7 @@ const Detail = (props) => {
       <p>수정일:{post.updateDate}</p>
       <p>조회수:{post.viewCount}</p>
       <p>추천:{post.like}</p>
-      <p>작성자:</p>
+      <p>작성자:{writer.nickname}</p>
     </>
   ) : (
     <>"데이터x"</>
