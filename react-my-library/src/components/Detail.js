@@ -36,7 +36,7 @@ const Detail = (props) => {
       <p>작성자:{writer.nickname}</p>
     </>
   ) : (
-    <>"데이터x"</>
+    <p>해당 게시글은 존재하지 않습니다.</p>
   );
 };
 
