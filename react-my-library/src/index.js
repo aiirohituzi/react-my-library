@@ -12,11 +12,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // 이로 인해 useEffect 의존성 배열에 빈배열을 전달해도 두 번 실행되는 것처럼 보임
 // 실제 빌드에선 그럴 일이 없다.
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

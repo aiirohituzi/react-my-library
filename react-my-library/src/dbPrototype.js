@@ -88,34 +88,34 @@ export const COMMENT = [
   {
     cid: 0,
     message: "wwwww",
-    createDate: "YYYY-MM-DD hh:mm:ss",
-    updateDate: "YYYY-MM-DD hh:mm:ss",
+    createDate: "2023-06-12 12:00:00",
+    updateDate: "2023-06-12 12:00:00",
     uid: "user1",
-    pid: "0",
+    pid: "1",
   },
   {
     cid: 1,
     message: "ㅎㅎ",
-    createDate: "YYYY-MM-DD hh:mm:ss",
-    updateDate: "YYYY-MM-DD hh:mm:ss",
+    createDate: "2023-06-13 12:00:00",
+    updateDate: "2023-06-13 12:00:00",
     uid: "user2",
     pid: "1",
   },
   {
     cid: 2,
     message: "ㅋㅋ",
-    createDate: "YYYY-MM-DD hh:mm:ss",
-    updateDate: "YYYY-MM-DD hh:mm:ss",
+    createDate: "2023-06-14 12:00:00",
+    updateDate: "2023-06-14 12:00:00",
     uid: "user3",
     pid: "1",
   },
   {
     cid: 3,
     message: "ㅈㅅ",
-    createDate: "YYYY-MM-DD hh:mm:ss",
-    updateDate: "YYYY-MM-DD hh:mm:ss",
+    createDate: "2023-06-15 12:00:00",
+    updateDate: "2023-06-15 12:00:00",
     uid: "user1",
-    pid: "1",
+    pid: "2",
   },
 ];
 
@@ -125,7 +125,15 @@ export const getPost = (pid) => {
   return filterdPosts[0];
 };
 
+// 작성자 닉네임 요청
 export const getWriter = (uid) => {
   let nickname = USER.filter((e) => e.uid === uid);
   return nickname[0];
+};
+
+// 특정 게시글의 댓글 목록 요청
+export const getComment = (pid) => {
+  let filterdComments = COMMENT.filter((e) => Number(e.pid) === Number(pid));
+  console.log(filterdComments);
+  return filterdComments;
 };

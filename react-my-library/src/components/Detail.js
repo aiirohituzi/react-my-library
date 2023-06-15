@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getPost, getWriter } from "../dbPrototype";
+import { getComment, getPost, getWriter } from "../dbPrototype";
 import { consoleLog } from "../util";
+import { Comment } from "./";
 
 const Detail = (props) => {
   const [post, setPost] = useState();
   const [writer, setWriter] = useState();
+  // const [comment, setComement] = useState();
   const params = useParams();
 
   const data = getPost(params.pid);
+  const comments = getComment(params.pid);
 
   useEffect(() => {
     consoleLog("data", data);
@@ -23,7 +26,6 @@ const Detail = (props) => {
       setWriter(writer);
     }
   }, [post]);
-
   return post && writer ? (
     <>
       <p>글번호:{post.pid}</p>
@@ -34,6 +36,7 @@ const Detail = (props) => {
       <p>조회수:{post.viewCount}</p>
       <p>추천:{post.like}</p>
       <p>작성자:{writer.nickname}</p>
+      <Comment data={comments} />
     </>
   ) : (
     <p>해당 게시글은 존재하지 않습니다.</p>
