@@ -7,25 +7,25 @@ import { Comment } from "./";
 const Detail = (props) => {
   const [post, setPost] = useState();
   const [writer, setWriter] = useState();
-  // const [comment, setComement] = useState();
   const params = useParams();
 
   const data = getPost(params.pid);
   const comments = getComment(params.pid);
 
   useEffect(() => {
-    consoleLog("data", data);
+    // consoleLog("data", data);
     if (data) setPost(data);
   }, [data]);
 
   useEffect(() => {
-    consoleLog("post", post);
+    // consoleLog("post", post);
     if (post) {
       const writer = getWriter(post.uid);
-      consoleLog("writer", writer);
+      // consoleLog("writer", writer);
       setWriter(writer);
     }
   }, [post]);
+
   return post && writer ? (
     <>
       <p>글번호:{post.pid}</p>
