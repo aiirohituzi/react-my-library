@@ -3,7 +3,7 @@ import { consoleLog } from "../util";
 
 const Comment = (props) => {
   const comments = props.data;
-  consoleLog("comments", comments);
+  // consoleLog("comments", comments);
 
   return comments ? (
     <>
@@ -12,7 +12,7 @@ const Comment = (props) => {
         .map((obj) => {
           return (
             <li key={obj.cid}>
-              {`댓글번호:${obj.cid} / 댓글내용:${obj.message} / 작성일:${obj.createDate} / 수정일:${obj.updateDate} / uid:${obj.uid} / pid:${obj.pid}`}
+              {`댓글번호:${obj.cid} / 작성자:${obj.computedUser.nickname} / 댓글내용:${obj.message} / 작성일:${obj.createDate} / 수정일:${obj.updateDate} / uid:${obj.uid} / pid:${obj.pid}`}
             </li>
           );
         })}

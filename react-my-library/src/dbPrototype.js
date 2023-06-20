@@ -127,13 +127,16 @@ export const getPost = (pid) => {
 
 // 작성자 닉네임 요청
 export const getWriter = (uid) => {
-  let nickname = USER.filter((e) => e.uid === uid);
-  return nickname[0];
+  let user = USER.filter((e) => e.uid === uid);
+  return { uid: user[0].uid, nickname: user[0].nickname };
 };
 
 // 특정 게시글의 댓글 목록 요청
 export const getComment = (pid) => {
+  let comments = [];
   let filterdComments = COMMENT.filter((e) => Number(e.pid) === Number(pid));
-  console.log(filterdComments);
-  return filterdComments;
+  filterdComments.forEach((e) => {
+    comments = [...comments, { ...e, computedUser: getWriter(e.uid) }];
+  });
+  return comments;
 };
