@@ -17,8 +17,14 @@ const List = (props) => {
     nav(`/detail/${pid}`);
   };
 
+  const createPost = () => {
+    console.log("글작성");
+    nav(`/createPost`);
+  };
+
   return (
     <>
+      <button onClick={createPost}>글작성</button>
       {data
         ?.sort((a, b) => b.pid - a.pid)
         .map((obj) => {
