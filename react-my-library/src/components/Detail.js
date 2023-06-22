@@ -3,14 +3,20 @@ import { useParams } from "react-router-dom";
 import { getComment, getPost, getWriter } from "../dbPrototype";
 import { consoleLog } from "../util";
 import { Comment } from "./";
+import { useNavigate } from "react-router-dom";
 
 const Detail = (props) => {
   const [post, setPost] = useState();
   const [writer, setWriter] = useState();
   const params = useParams();
+  const nav = useNavigate();
 
   const data = getPost(params.pid);
   const comments = getComment(params.pid);
+
+  const toList = () => {
+    nav(`/list`);
+  };
 
   useEffect(() => {
     // consoleLog("data", data);
@@ -28,6 +34,7 @@ const Detail = (props) => {
 
   return post && writer ? (
     <>
+      <button onClick={() => toList()}>목록</button>
       <p>글번호:{post.pid}</p>
       <p>글제목:{post.title}</p>
       <p>글내용:{post.content}</p>
