@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { consoleLog } from "../util";
 
 // TODO: 에디터 모듈 사용하는걸로 후에 수정 필요
+// 에디터 모듈은 여러군데에서 사용할 수 있으니 따로 컴포넌트화
 const CreatePost = () => {
   const nav = useNavigate();
   const [title, setTitle] = useState("");
@@ -10,12 +12,12 @@ const CreatePost = () => {
   const refContent = useRef(null);
 
   const createPost = () => {
-    console.log(title);
-    console.log(content);
+    consoleLog("title", title);
+    consoleLog("content", content);
 
-    if (title.length == 0) {
+    if (title.length === 0) {
       refTitle.current.focus();
-    } else if (content.length == 0) {
+    } else if (content.length === 0) {
       refContent.current.focus();
     } else {
       nav(`/list`);

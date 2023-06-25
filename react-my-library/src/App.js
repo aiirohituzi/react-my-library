@@ -1,6 +1,5 @@
 import "./App.css";
-import { List, Detail } from "./components";
-import { CreatePost } from "./pages";
+import { List, Detail, CreatePost } from "./pages";
 import { POST } from "./dbPrototype";
 import { Route, Routes } from "react-router-dom";
 
@@ -10,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route exact path="/" element={<List data={POST} />} />
         <Route exact path="/list" element={<List data={POST} />} />
         <Route exact path="/detail/:pid" element={<Detail />} />
         <Route exact path="/createPost" element={<CreatePost />} />

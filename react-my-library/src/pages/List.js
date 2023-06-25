@@ -18,7 +18,6 @@ const List = (props) => {
   };
 
   const createPost = () => {
-    console.log("글작성");
     nav(`/createPost`);
   };
 

@@ -3,7 +3,7 @@ import { consoleLog } from "../util";
 
 const Comment = (props) => {
   const comments = props.data;
-  // consoleLog("comments", comments);
+  consoleLog("comments", comments);
 
   return comments ? (
     <>

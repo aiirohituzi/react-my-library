@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getComment, getPost, getWriter } from "../dbPrototype";
 import { consoleLog } from "../util";
-import { Comment } from "./";
+import { Comment } from "../components";
 import { useNavigate } from "react-router-dom";
 
 const Detail = (props) => {
