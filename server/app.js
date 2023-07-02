@@ -1,9 +1,7 @@
+const dotenv = require("dotenv");
 const express = require("express");
 const path = require("path");
 const app = express();
-const dotenv = require("dotenv");
-
-const maria = require("./database/connect/maria");
 
 if (process.env.NODE_ENV == "local") {
   console.log("Local Server");
@@ -16,6 +14,9 @@ if (process.env.NODE_ENV == "local") {
   return;
 }
 const PORT = process.env.PORT || 8080;
+
+// env 로딩 후 실행해야 함
+const maria = require("./database/connect/maria");
 
 // Express 앱 구성
 // app.use(express.json());
