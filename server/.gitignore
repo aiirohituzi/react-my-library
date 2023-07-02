@@ -1,0 +1,6 @@
+# dotenv
+.env.local
+.env.synology
+
+# dependencies
+/node_modules
